@@ -1,0 +1,26 @@
+<form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+  <div class="p-field">
+    <label for="name">Nombre</label>
+    <input id="name" type="text" formControlName="name"  pInputText>
+    <div *ngIf="userForm.get('name')?.invalid && userForm.get('name')?.touched">
+      <small class="p-error">Nombre es requerido</small>
+    </div>
+  </div>
+
+  <div class="p-field">
+    <label for="email">Correo Electrónico</label>
+    <input id="email" type="email" formControlName="email" pInputText>
+    <div *ngIf="userForm.get('email')?.invalid && userForm.get('email')?.touched">
+      <small class="p-error">Correo electrónico inválido</small>
+    </div>
+  </div>
+
+  <div class="p-field">
+    <label for="birthday">Fecha de Nacimiento</label>
+    <input id="birthday"  type="date" formControlName="birthday" pInputText>
+    <div *ngIf="userForm.get('birthday')?.invalid && userForm.get('birthday')?.touched">
+      <small class="p-error">Fecha de nacimiento es requerida</small>
+    </div>
+  </div>
+  <button type="submit" pButton label="Enviar" [disabled]="userForm.invalid"></button>
+</form>
